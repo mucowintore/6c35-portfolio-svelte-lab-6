@@ -5,14 +5,6 @@
 <div class="resume-page">
   <main>
     <h1>Resume</h1>
-    <nav aria-label="Primary">
-      <a href=".">Home</a>
-      <a href="projects">Projects</a>
-      <a href="contact">Contact</a>
-      <a class="current" href="resume">Resume</a>
-      <a href="https://github.com/mucowintore" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </nav>
-
     <header>
       <p><strong>Muco</strong> - CS Student · Cambridge, MA · email@example.com</p>
     </header>

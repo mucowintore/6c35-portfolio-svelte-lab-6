@@ -4,13 +4,6 @@
 
 <main>
   <h1>Contact</h1>
-  <nav aria-label="Primary">
-    <a href=".">Home</a>
-    <a href="projects">Projects</a>
-    <a class="current" href="contact">Contact</a>
-    <a href="resume">Resume</a>
-    <a href="https://github.com/mucowintore" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </nav>
   <p>This form opens your email client with a draft message so you can reach out quickly.</p>
   <form action="mailto:16810076+mucowintore@users.noreply.github.com" method="GET">
     <label>
