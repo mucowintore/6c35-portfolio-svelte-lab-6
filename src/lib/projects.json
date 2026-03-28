@@ -1,62 +1,72 @@
 [
   {
-    "title": "Lorem ipsum dolor sit.",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores quaerat distinctio culpa nemo ipsa tempore modi! Nobis consequatur quisquam cumque magni corporis vero tempora veniam sunt. Soluta expedita magnam ipsa?"
+    "title": "Freshman Fall Study Planner",
+    "year": 2022,
+    "image": "https://picsum.photos/seed/study-planner/900/560",
+    "description": "A simple weekly planner app that helped me balance psets, lectures, and club meetings.",
+    "story": "This was the first project where I stopped writing code only for class and built something I actually used every week. I learned quickly that a feature is only useful if entering data takes less effort than remembering everything in my head."
   },
   {
-    "title": "Architecto at ab hic.",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Exercitationem, temporibus quaerat asperiores iusto excepturi, atque commodi esse expedita dolorum, a obcaecati! At, temporibus eaque incidunt ipsum placeat nam harum sit minus, deserunt magnam iusto perferendis velit, exercitationem magni!"
+    "title": "Dorm Chore Rotation Tool",
+    "year": 2023,
+    "image": "https://picsum.photos/seed/chore-rotation/900/560",
+    "description": "A lightweight scheduling tool for assigning cleaning tasks fairly across roommates.",
+    "story": "Our floor chat was full of friendly arguments about whose turn it was to clean. Building this tool taught me that transparent rules and visible history can solve social friction faster than extra reminders."
   },
   {
-    "title": "Est ipsam suscipit a!",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Rerum quos beatae veritatis eligendi itaque ipsam, incidunt enim tempore repudiandae aspernatur eius laboriosam dolore dolor asperiores corporis tenetur a porro ipsa! Esse neque non quidem sequi beatae unde ea?"
+    "title": "Campus Event Discovery Map",
+    "year": 2023,
+    "image": "https://picsum.photos/seed/event-map/900/560",
+    "description": "An interactive map that aggregates club and department events by location and time.",
+    "story": "I wanted a single place to find events between classes instead of checking five different mailing lists. The project pushed me to think about spatial filtering and how small UX decisions affect whether people browse or bounce."
   },
   {
-    "title": "Similique totam perferendis recusandae?",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "At ab quam aut eaque sit quo perspiciatis, consectetur adipisci vero quisquam placeat, eos nostrum qui, quibusdam modi! Nobis a suscipit laborum autem necessitatibus culpa explicabo maiores doloremque deserunt ea?"
+    "title": "Recipe Cost Optimizer",
+    "year": 2024,
+    "image": "https://picsum.photos/seed/recipe-cost/900/560",
+    "description": "A grocery planning app that compares recipes by cost, prep time, and pantry overlap.",
+    "story": "I started this after realizing I was buying the same ingredients twice in one week. Building it taught me to model real-world constraints and to prioritize a clean data entry flow over flashy UI elements."
   },
   {
-    "title": "Numquam accusantium minus iusto!",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Suscipit numquam, incidunt beatae similique iste fugit nisi minus officia sed praesentium perferendis. Molestias, hic iste? Fugit exercitationem perspiciatis nulla, eos cumque tempore odit aliquam vitae minima ipsam excepturi quidem!"
+    "title": "Open Source CLI Contribution",
+    "year": 2025,
+    "image": "https://picsum.photos/seed/oss-cli/900/560",
+    "description": "Contributed bug fixes and docs improvements to a command-line tooling project.",
+    "story": "Working in a public repo changed how I write code comments and commit messages. The review process was strict but fair, and it improved the way I justify technical decisions."
   },
   {
-    "title": "Pariatur voluptatum voluptate culpa!",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Suscipit reiciendis pariatur saepe nobis aliquam soluta! Voluptates delectus at culpa obcaecati rem impedit eius, praesentium veniam sed autem aspernatur cupiditate suscipit labore, et vel hic unde accusantium expedita laborum."
+    "title": "Housing Listings ETL Pipeline",
+    "year": 2025,
+    "image": "https://picsum.photos/seed/housing-etl/900/560",
+    "description": "A weekly pipeline that extracts listing data, cleans address fields, and tracks price changes.",
+    "story": "This was my first project where data quality bugs mattered more than model complexity. The biggest wins came from robust parsing, deduplication, and checks that caught broken records early."
   },
   {
-    "title": "Eum, suscipit quos! Voluptatem?",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Recusandae omnis voluptas eos quo voluptate ipsa tempore hic velit adipisci reiciendis ratione architecto porro autem excepturi quos id officiis iusto commodi error maiores accusamus, vero nihil maxime aspernatur? Itaque?"
+    "title": "Portfolio Site Redesign",
+    "year": 2026,
+    "image": "https://picsum.photos/seed/portfolio-redesign/900/560",
+    "description": "A redesign focused on reusable components, cleaner navigation, and better mobile behavior.",
+    "story": "I treated this as a maintainability project rather than a cosmetic refresh. Consolidating repeated markup into reusable components made future updates faster and less error-prone."
   },
   {
-    "title": "Aliquam minus corrupti repudiandae!",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Pariatur placeat quae blanditiis laboriosam voluptatibus natus debitis perspiciatis, repellendus, doloribus voluptas esse nobis doloremque officiis maiores in tempore voluptatum nam culpa! Provident nemo odit in quas quasi ea suscipit!"
+    "title": "Accessibility Audit Toolkit",
+    "year": 2026,
+    "image": "https://picsum.photos/seed/a11y-audit/900/560",
+    "description": "A checklist and script bundle for checking color contrast, heading structure, and keyboard navigation.",
+    "story": "A teammate pointed out that one of my pages was hard to use with keyboard-only navigation. This toolkit came from that feedback and made accessibility checks part of my normal workflow."
   },
   {
-    "title": "Perspiciatis molestias aperiam nobis.",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Unde, voluptatem? Magnam, dicta aut? Qui at odit incidunt aspernatur et itaque repellat aperiam accusantium assumenda nobis, deleniti mollitia, omnis a consectetur quaerat maxime doloremque error? Velit sunt expedita qui?"
+    "title": "Narrative Dashboard Prototype",
+    "year": 2026,
+    "image": "https://picsum.photos/seed/narrative-dashboard/900/560",
+    "description": "A prototype that pairs short narrative text with synchronized visual cards for story-driven analysis.",
+    "story": "I wanted to test whether sequencing text and visuals could guide readers without feeling rigid. Iterating on pacing and annotation density helped me balance explanation with exploration."
   },
   {
-    "title": "Facere facilis beatae vero.",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Facere quibusdam eligendi esse eum iste maiores fuga quia, corporis totam sunt iusto, voluptate magni beatae tenetur fugiat porro animi nobis aspernatur eaque, autem qui cumque exercitationem numquam explicabo. Possimus!"
-  },
-  {
-    "title": "Enim maxime saepe iste.",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Repellendus nam id deserunt fugit et! Eius tempore in rem, assumenda necessitatibus quasi quidem quibusdam vitae incidunt labore reprehenderit optio quod eos, iure ipsa. Consequatur, voluptatibus totam. Animi, sequi suscipit."
-  },
-  {
-    "title": "Vero debitis animi eum.",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "Aut illum eligendi sint deserunt nemo pariatur culpa dolores rerum accusantium cumque, enim laborum unde, iste debitis cum aspernatur quas? Distinctio accusamus suscipit doloribus molestiae quod soluta asperiores blanditiis modi?"
+    "title": "Personal Analytics Dashboard",
+    "year": 2026,
+    "image": "https://picsum.photos/seed/personal-dashboard/900/560",
+    "description": "A dashboard for tracking reading habits, project time, and weekly progress trends.",
+    "story": "This project closed the loop between data collection and reflection. Seeing trends over time changed how I planned my week and reinforced the value of simple metrics that are easy to maintain."
   }
 ]
