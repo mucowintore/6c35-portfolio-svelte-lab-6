@@ -5,6 +5,7 @@
 <article>
   <h2>{data.title}</h2>
   <img src={data.image} alt="" />
+  <p class="year">{data.year}</p>
   <p>{data.description}</p>
 </article>
 
@@ -21,6 +22,13 @@
 
   h2 {
     margin: 0;
+  }
+
+  .year {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: color-mix(in oklch, currentColor, canvas 35%);
   }
 
   img {
