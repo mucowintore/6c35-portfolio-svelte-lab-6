@@ -270,7 +270,7 @@
     cursor: pointer;
   }
 
-  circle:hover:not(.selected) {
+  circle:hover {
     fill: #5f8f6e;
     fill-opacity: 0.9;
   }
@@ -285,6 +285,11 @@
     fill-opacity: 1;
     stroke: rgba(255, 255, 255, 0.85);
     stroke-width: 1.25;
+  }
+
+  .selected:hover {
+    fill: #57b774;
+    fill-opacity: 1;
   }
 
   .tooltip {
