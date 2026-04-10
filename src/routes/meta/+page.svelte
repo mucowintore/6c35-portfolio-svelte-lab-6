@@ -4,9 +4,11 @@
   import * as d3 from 'd3';
   import { computePosition, autoPlacement, offset } from '@floating-ui/dom';
   import BarHorizontal from '$lib/BarHorizontal.svelte';
+  import LineChart from '$lib/LineChart.svelte';
 
   let locData = [];
   let commits = [];
+  let linesByDate = [];
   let locByLanguage = [];
   let loading = true;
   let error = null;
@@ -18,10 +20,12 @@
   let xAxis;
   let yAxis;
   let yAxisGridlines;
+  let svg;
   let commitTooltip;
   let tooltipPosition = { x: 0, y: 0 };
   let hoveredIndex = -1;
   let clickedCommits = [];
+  let brushSelection = null;
 
   const formatDateTime = d3.timeFormat('%b %-d, %Y, %-I:%M %p');
   const formatTickDay = d3.timeFormat('%a');
@@ -44,7 +48,10 @@
     )
     .sort((a, b) => b[1] - a[1])
     .map(([label]) => label);
-  $: selectedLines = clickedCommits.length > 0 ? clickedCommits.flatMap((c) => c.lines) : locData;
+  $: brushedCommits = brushSelection ? commits.filter(isCommitBrushed) : [];
+  $: selectedCommits = Array.from(new Set([...clickedCommits, ...brushedCommits]));
+  $: selectedLines =
+    selectedCommits.length > 0 ? selectedCommits.flatMap((c) => c.lines) : commits.flatMap((c) => c.lines);
   $: selectedLineCounts = d3.rollup(
     selectedLines,
     (v) => v.length,
@@ -55,9 +62,31 @@
     value: selectedLineCounts.get(label) ?? 0,
   }));
   $: barChartTitle =
-    clickedCommits.length > 0
-      ? 'Lines of Code by Language (Selected Commits)'
+    selectedCommits.length > 0
+      ? `Lines of Code by Language (${selectedCommits.length} Selected Commits)`
       : 'Lines of Code by Language (Entire Website)';
+  $: {
+    const rolled = d3
+      .rollups(
+        locData,
+        (v) => v.length,
+        (d) => d3.timeDay.floor(d.datetime)
+      )
+      .map(([date, count]) => ({ date, count }))
+      .sort((a, b) => a.date - b.date);
+
+    const [minDate, maxDate] = d3.extent(rolled, (d) => d.date);
+    if (!minDate || !maxDate) {
+      linesByDate = [];
+    } else {
+      const allDays = d3.timeDays(minDate, d3.timeDay.offset(maxDate, 1));
+      const countByDay = new Map(rolled.map((d) => [d.date.getTime(), d.count]));
+      linesByDate = allDays.map((date) => ({
+        date,
+        count: countByDay.get(date.getTime()) ?? 0,
+      }));
+    }
+  }
   $: lineExtent = d3.extent(commits, (d) => d.totalLines);
   $: minDate = d3.min(commits, (d) => d.datetime);
   $: maxDate = d3.max(commits, (d) => d.datetime);
@@ -101,6 +130,21 @@
     }
   }
 
+  function brushed(evt) {
+    brushSelection = evt.selection;
+  }
+
+  function isCommitBrushed(commit) {
+    if (!brushSelection) {
+      return false;
+    }
+
+    const [[x0, y0], [x1, y1]] = brushSelection;
+    const x = xScale(commit.datetime);
+    const y = yScale(commit.hourFrac);
+    return x >= x0 && x <= x1 && y >= y0 && y <= y1;
+  }
+
   $: if (xAxis && yAxis && yAxisGridlines) {
     d3.select(xAxis).call(d3.axisBottom(xScale).ticks(d3.timeSunday.every(1)).tickPadding(6));
     d3.select(xAxis)
@@ -117,6 +161,22 @@
     d3
       .select(yAxisGridlines)
       .call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
+  }
+
+  $: {
+    if (svg) {
+      d3.select(svg).call(
+        d3
+          .brush()
+          .extent([
+            [usableArea.left, usableArea.top],
+            [usableArea.right, usableArea.bottom],
+          ])
+          .on('start brush end', brushed)
+      );
+
+      d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
+    }
   }
 
   onMount(async () => {
@@ -175,7 +235,7 @@
     <section class="scatterplot-section">
       <h2>Commit Activity by Time and Date</h2>
       <div class="chart-container">
-        <svg viewBox={`0 0 ${width} ${height}`}>
+        <svg viewBox={`0 0 ${width} ${height}`} bind:this={svg}>
           <g
             class="gridlines"
             transform={`translate(${usableArea.left}, 0)`}
@@ -194,7 +254,7 @@
           <g class="dots">
             {#each commits as commit, index}
               <circle
-                class:selected={clickedCommits.includes(commit)}
+                class:selected={selectedCommits.includes(commit)}
                 cx={xScale(commit.datetime)}
                 cy={yScale(commit.hourFrac)}
                 r={rScale(commit.totalLines)}
@@ -203,7 +263,7 @@
                 data-index={index}
                 role="button"
                 aria-label={`Commit ${commit.id}`}
-                aria-pressed={clickedCommits.includes(commit)}
+                aria-pressed={selectedCommits.includes(commit)}
                 tabindex="0"
                 on:mouseenter={(evt) => dotInteraction(index, evt)}
                 on:mouseleave={(evt) => dotInteraction(index, evt)}
@@ -236,10 +296,20 @@
     <section class="bar-chart-section">
       <BarHorizontal data={locByLanguage} title={barChartTitle} />
     </section>
+
+    <section class="line-chart-section">
+      <LineChart data={linesByDate} />
+    </section>
   {/if}
 </main>
 
 <style>
+  @keyframes marching-ants {
+    to {
+      stroke-dashoffset: -8;
+    }
+  }
+
   .scatterplot-section {
     margin: 1.8rem 0 2rem;
   }
@@ -253,6 +323,10 @@
 
   .bar-chart-section {
     margin-top: 2.4rem;
+  }
+
+  .line-chart-section {
+    margin-top: 2.2rem;
   }
 
   .chart-container {
@@ -319,6 +393,14 @@
 
   :global(.gridlines .domain) {
     display: none;
+  }
+
+  svg :global(.selection) {
+    fill-opacity: 0.1;
+    stroke: currentColor;
+    stroke-opacity: 0.7;
+    stroke-dasharray: 5 3;
+    animation: marching-ants 2s linear infinite;
   }
 
   :global(.x-axis text),
