@@ -7,6 +7,11 @@
   <img src={data.image} alt="" />
   <p class="year">{data.year}</p>
   <p>{data.description}</p>
+  {#if data.url}
+    <p class="link-row">
+      <a href={data.url} target="_blank" rel="noreferrer">Open project</a>
+    </p>
+  {/if}
 </article>
 
 <style>
@@ -34,5 +39,13 @@
   img {
     max-width: 100%;
     height: auto;
+  }
+
+  .link-row {
+    margin: 0.2rem 0 0;
+  }
+
+  a {
+    font-weight: 600;
   }
 </style>

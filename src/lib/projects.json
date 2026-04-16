@@ -68,5 +68,13 @@
     "image": "https://picsum.photos/seed/personal-dashboard/900/560",
     "description": "A dashboard for tracking reading habits, project time, and weekly progress trends.",
     "story": "This project closed the loop between data collection and reflection. Seeing trends over time changed how I planned my week and reinforced the value of simple metrics that are easy to maintain."
+  },
+  {
+    "title": "Lab 9: BlueBikes Spatial Story",
+    "year": 2026,
+    "image": "https://picsum.photos/seed/lab9-bluebikes/900/560",
+    "description": "An interactive Mapbox + D3 exploration of BlueBikes station demand, directional flow, and bike-access isochrones.",
+    "story": "This lab combined map rendering, SVG overlays, and temporal filtering. The key challenge was keeping station positions and isochrone paths synchronized with map pan and zoom while preserving readable visual encoding.",
+    "url": "https://mucowintore.github.io/lab9-bikewatching/"
   }
 ]
